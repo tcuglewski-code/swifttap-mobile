@@ -1,5 +1,6 @@
-import { StyleSheet, View, Text, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, RefreshControl, TouchableOpacity } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
+import { router } from 'expo-router';
 import axios from 'axios';
 import { useState, useCallback } from 'react';
 import Colors from '@/constants/Colors';
@@ -82,6 +83,19 @@ export default function DashboardScreen() {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={Colors.accent} />
       }
     >
+      {/* Tap to Pay Quick Access */}
+      <TouchableOpacity 
+        style={styles.tapToPayButton}
+        onPress={() => router.push('/tap-to-pay')}
+      >
+        <Text style={styles.tapToPayIcon}>📶</Text>
+        <View style={styles.tapToPayContent}>
+          <Text style={styles.tapToPayTitle}>Tap to Pay</Text>
+          <Text style={styles.tapToPaySubtitle}>Kontaktlose Zahlung empfangen</Text>
+        </View>
+        <Text style={styles.tapToPayArrow}>→</Text>
+      </TouchableOpacity>
+
       {/* Header Stats */}
       <View style={styles.statsContainer}>
         <View style={styles.statCard}>
@@ -141,6 +155,38 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 50,
     fontSize: 16,
+  },
+  tapToPayButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 201, 177, 0.15)',
+    borderRadius: 16,
+    padding: 16,
+    marginHorizontal: 16,
+    marginTop: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 201, 177, 0.3)',
+  },
+  tapToPayIcon: {
+    fontSize: 28,
+    marginRight: 12,
+  },
+  tapToPayContent: {
+    flex: 1,
+  },
+  tapToPayTitle: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  tapToPaySubtitle: {
+    color: 'rgba(255,255,255,0.6)',
+    fontSize: 12,
+    marginTop: 2,
+  },
+  tapToPayArrow: {
+    color: Colors.accent,
+    fontSize: 20,
   },
   statsContainer: {
     flexDirection: 'row',
