@@ -1,19 +1,22 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+// SwiftTap Color Palette
+const tintColorLight = '#00C9B1';
+const tintColorDark = '#00C9B1';
 
 export default {
   light: {
-    text: '#000',
+    text: '#1A2744',
     background: '#fff',
     tint: tintColorLight,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#687076',
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#fff',
-    background: '#000',
+    text: '#ECEDEE',
+    background: '#1A2744',
     tint: tintColorDark,
-    tabIconDefault: '#ccc',
+    tabIconDefault: '#687076',
     tabIconSelected: tintColorDark,
   },
+  primary: '#1A2744',
+  accent: '#00C9B1',
 };
